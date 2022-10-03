@@ -48,13 +48,11 @@ for number in numbers:
                 if boards[k,i,j] == int(number):
                     marked[k,i,j] = 1
         for i in range(5):
-            if all(marked[k, :, i]) == 1:
+            if all(marked[k, :, i]) == 1 or all(marked[k, i, :]) == 1:
                 board_index[k] = True
-            if all(marked[k, i, :]) == 1:
-                board_index[k] = True
-            losing_index = k
             if all(board_index) == True:
                 last_winning_number = number
+                losing_index = k
                 break
         if all(board_index) == True:
             break
