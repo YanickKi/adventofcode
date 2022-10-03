@@ -12,7 +12,7 @@ for row in range(len(unfiltered_data)):
 
 sign = [[1] * 2 for i in range(len(data))]
 
-#determine wether x1 > x2 or y1>y2
+#determine wether x1>x2 or y1>y2, the sign is important for the range function later on
 for row in range(len(sign)):
     if unfiltered_data[row][0] > unfiltered_data[row][2]:
         sign[row][0] = -1
@@ -27,14 +27,12 @@ board = [['.'] * (max_x +1) for i in range(max_y + 1)]
 
 for row in range(len(data)):
     if data[row][0] == data[row][2]:
-        way = [list(range(data[row][1], data[row][3] + sign[row][1], sign[row][1])),[data[row][0]] * abs(unfiltered_data[row][3] - unfiltered_data[row][1])]
-    elif data[row][1] != data[row][3]:
-        way = [[data[row][1]] * abs(unfiltered_data[row][2] - unfiltered_data[row][0]),list(range(data[row][0], data[row][2] + sign[row][0], sign[row][0]))]
+        way = [list(range(data[row][1], data[row][3] + sign[row][1], sign[row][1])),[data[row][0]] * (abs(unfiltered_data[row][3] - unfiltered_data[row][1])+1)]
+    elif data[row][1] == data[row][3]: 
+        way = [[data[row][1]] * (abs(unfiltered_data[row][2] - unfiltered_data[row][0])+1), list(range(data[row][0], data[row][2] + sign[row][0], sign[row][0]))]
     else:
         way = [list(range(data[row][1], data[row][3] + sign[row][1], sign[row][1])),list(range(data[row][0], data[row][2] + sign[row][0], sign[row][0]))]
     for coloumn in range(len(way[0])):
-        print(len(way[0]))
-        print([way[0][coloumn], way[1][coloumn]])
         if board[way[0][coloumn]][way[1][coloumn]] == '.':
             board[way[0][coloumn]][way[1][coloumn]] = 1
         else:
