@@ -8,16 +8,14 @@ for fish in range(len(init)):
 
 for day in range(256):
     new_born = count_days[0]
-    count_days[8] += new_born
-    count_days[6] += new_born
     count_days[0] = 0
     for fish_age in range(0, len(count_days) - 1):
         if fish_age == 5:
-            count_days[fish_age] = count_days[fish_age + 1] - new_born
+            count_days[fish_age] = count_days[fish_age + 1]
         elif fish_age == 6:
             count_days[fish_age] = count_days[fish_age + 1] + new_born
         elif fish_age == 7:
-            count_days[fish_age] = count_days[fish_age + 1] - new_born
+            count_days[fish_age] = count_days[fish_age + 1]
             count_days[fish_age + 1] = new_born    
         else:
             count_days[fish_age] += count_days[fish_age + 1]
