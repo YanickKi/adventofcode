@@ -4,6 +4,7 @@
 #include <string.h>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 
 int main () {
@@ -32,8 +33,15 @@ int main () {
       }
     }
 
-  cout << *std::max_element(begin(calories), end(calories));
+  cout << "Calories of the first elf: " << *max_element(begin(calories), end(calories));
 
 // part 2
+vector<int> first_three;
+
+  for(int i = 0; i<3; i++){
+    first_three.push_back(*max_element(begin(calories), end(calories)));
+    remove(calories.begin(), calories.end(), *max_element(begin(calories), end(calories)));
+  }
+  cout << "Calories of the first three elfs: " << accumulate(first_three.begin(), first_three.end(), 0);
   return 0;
 }
