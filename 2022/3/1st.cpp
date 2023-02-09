@@ -59,7 +59,52 @@ int main () {
       count[i] = 0;
     } 
   }
+  //cout << "Sum of priorities: " << priority << "\n";
+  // part 2
+
+  priority = 0;
+
+  for (int elf = 0; elf < __backpacks.size(); elf++){ 
+    for (int item = 0; item < __backpacks[elf].size(); item++){ 
+      if(int(__backpacks[elf][item]) < 97){
+        if((elf + 1) % 3 == 1){        
+          count[int(__backpacks[elf][item])- 65] = 1;
+        }
+        if((elf + 1) % 3 == 2 and count[int(__backpacks[elf][item])- 65] == 1){        
+          count[int(__backpacks[elf][item])- 65] = 2;
+        }
+        if((elf + 1) % 3 == 0 and count[int(__backpacks[elf][item])- 65] == 2){        
+          count[int(__backpacks[elf][item])- 65] = 3;
+        }
+      }
+      else{
+        if((elf + 1) % 3 == 1){
+        count[int(__backpacks[elf][item])- 97 + 26] = 1;
+        }
+        if((elf + 1) % 3 == 2 and count[int(__backpacks[elf][item])- 97 + 26] == 1){
+        count[int(__backpacks[elf][item])- 97 + 26] = 2;
+        }
+        if((elf + 1) % 3 == 0 and count[int(__backpacks[elf][item])- 97 + 26] == 2){
+        count[int(__backpacks[elf][item])- 97 + 26] = 3;
+        }
+      }
+    }
+    if((elf + 1) % 3 == 0 ){
+      for(int letter = 0; letter < 52; letter++){
+        if(count[letter] == 3){
+          if(letter < 26){
+            priority += letter + 27;
+          }
+          else{
+            priority += letter - 26 + 1;
+          }
+        }
+        count[letter] = 0;
+      }
+    }
+  }
   cout << "Sum of priorities: " << priority << "\n";
+
   return 0;
 
 }
