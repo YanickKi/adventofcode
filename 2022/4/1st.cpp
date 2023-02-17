@@ -23,14 +23,14 @@ int main () {
     input.close();
   }
 
-  for(int pair = 0; pair < __pair.size(); pair++){
-    for(int single = 0; single < __pair[pair].size(); single++){
-      if()
-    }
-  }
-//for(auto i = __pair.begin(); i < __pair.end(); i++){
-//  cout << *i << endl;
-//}
+  //for(int pair = 0; pair < __pair.size(); pair++){
+  //  for(int single = 0; single < __pair[pair].size(); single++){
+  //    if()
+  //  }
+  //}
+for(auto i = __pair.begin(); i < __pair.end(); i++){
+  cout << *i << endl;
+}
 
     return 0;
 }
